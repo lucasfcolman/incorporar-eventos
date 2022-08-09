@@ -1,47 +1,99 @@
-//Nombre de carrera
-let titulo = document.getElementById ("title");
-titulo.style.backgroundColor = "black";
-titulo.style.color = "white";
-console.log (titulo.innerHTML);
-let nombre = prompt("Ingrese la carrera que esta estudiando:");
-titulo.innerHTML = "Estudio: <b>" + nombre + "</b>";
-if (titulo = ""){
-    alert ("ACTUALIZAR E INGRESAR CARRERA")
-}
-//Materias
-var course = document.getElementsByTagName ("li");
-console.log (course);
-console.log (course[0].innerHTML);
-console.log (course[1].innerHTML);
-console.log (course[2].innerHTML);
-console.log (course[3].innerHTML);
-course[0].innerHTML = prompt ("Agregar Materias a cursar(Maximo 4, te quedan 3):");
-alert ("Puntos 3000")
-course[1].innerHTML = prompt ("Agregar Materias a cursar(Te quedan 2):");
-alert ("Puntos 1500")
-course[2].innerHTML = prompt ("Agregar Materias a cursar(Te quedan 1):");
-alert ("Puntos 500")
-course[3].innerHTML = prompt ("Agregar Materias a cursar(Restan 0)");
-alert ("Puntos 250") 
-//Promedio
+
+/* let nameCourse = prompt ("Ingrese el nombre de la carrera: ");
+let carrera = document.getElementById ("title");
+carrera.innerHTML = "Estudio: " + nameCourse;
+const materias = [
+    {id:1, nombre:"Matematicas", Puntaje:125},
+    {id:2, nombre:"Ingles", Puntaje:100},
+    {id:3, nombre:"Literatura", Puntaje:115},
+    {id:4, nombre:"Filosofia", Puntaje:50}];
+
+/* for (const materia of materias) {
+    let contenedor = document.createElement("div");
+    contenedor.className = "col-md-3";
+    contenedor.innerHTML = `<h3>ID: ${materia.id}</h3>
+                            <p>Puntaje: ${materia.nombre}<br>
+                            <b> ${materia.Puntaje}</b></p>
+                            <hr>`;
+                            document.getElementById("resultado").prepend(contenedor); */
+      
+      class Alumno {
+        constructor (nombre, email, password){
+            this.nombre = nombre;
+            this.email = email;
+            this.password = password;
+        }
+      }
+
+   let arrayAlumnos  =  [];
+   let miFormulario = document.querySelector ("#formulario");
+   let inputNombre = document.querySelector ("#iNombre");
+
+   let nombreI = formulario.children [1].value;
+   let emailI = formulario.children [3].value;
+   let passwordI = formulario.children [5].value;
+   
+
+   let contenedor = document.querySelector ("#alumnoIngresado");
+   let displayTodos = document.querySelector ("#displayTodos");
+   let parrafos = displayTodos.getElementsByTagName ("p");
+   let flag = false;
+
+   miFormulario.addEventListener ("submit", agregarAlumnos);
+   btnMostrar.addEventListener ("click", MostrarTodosAlumnos);
+   inputNombre.focus();
 
 
-/* const course = [0,1,2,3];
- 
-porCadaUno(course, (el)=> {
-    promedio.push((el + el + el + el) / 4 )
-})
-console.log(course); */
- 
-//For Of
+   function validarForm(){
+   nombreI = formulario.children[1].value;
+   emailI = formulario.children[3].value;
+   passwordI = formulario.children[5].value;
+   console.log(nombreI);
+   console.log(emailI);
+   console.log(passwordI);
+   }
+   if (nombreI =="" || emailI == "" || passwordI ==""){
+    alert ("ERROR - COMPLETAR LOS CAMPOS PARA CONTINUAR: ");
+    inputNombre.focus();
+    flag = false;
+   } else {
+    flag = true;
+   }
 
-for (const materia of title) {
-    console.log(materia.innerHTML);
-}
-for (const li of course) {
-    console.log(li.innerHTML);
-}
 
-let section = document.createElement ("section");
-let paragraph = document.createElement ("p");
-paragraph.innerHTML =  ("")
+   function agregarAlumnos (e){
+    e.preventDefault ();
+    validarForm();
+    if (flag == true) {
+        let opcion = confirm ("Seguro que quiere agregar alumno?");
+        if (opcion == true){
+            let formulario = e.target;
+            arrayAlumnos.push (new Alumno (nombreI, emailI, passwordI));
+        } else{
+            alert ("El usuario no se agregara");
+        }
+    }
+   }
+
+   formulario.children[1].value= "";
+   formulario.children[3].value="";
+   formulario.children[5].value="";
+   contenedor.innerHTML ="";
+   AgregarAlDom();
+   input.Nombre.focus();
+   
+
+
+   function AgregarAlDom (){
+    contenedor.innerHTML = "<h3>Ultimo Alumno Ingresado: </h3><p><strong> Nombre: </strong> ${nombreI}</p> <p><strong> Email: </strong> ${emailI}</p><p><strong> Password: </strong> ${passwordI}</p> <hr>";
+         }
+
+
+ function MostrarTodosAlumnos (){
+    e.preventDefault();
+    let i = 0;
+    displayTodos.innerHTML = '<h3> Listado de todos los Alumnos: </h3>';
+    for (const alumno of arrayAlumnos){
+        displayTodos.innerHTML += ' <p><strong> Nombre: </strong> ${alumno.nombre}</p> <p><strong> Email: </strong> ${alumno.email}</p><p><strong> Password: </strong> ${alumno.password}</p> <hr>'
+    }
+ }
