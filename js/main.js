@@ -1,33 +1,7 @@
 
-/* let nameCourse = prompt ("Ingrese el nombre de la carrera: ");
-let carrera = document.getElementById ("title");
-carrera.innerHTML = "Estudio: " + nameCourse;
-const materias = [
-    {id:1, nombre:"Matematicas", Puntaje:125},
-    {id:2, nombre:"Ingles", Puntaje:100},
-    {id:3, nombre:"Literatura", Puntaje:115},
-    {id:4, nombre:"Filosofia", Puntaje:50}];
-
-/* for (const materia of materias) {
-    let contenedor = document.createElement("div");
-    contenedor.className = "col-md-3";
-    contenedor.innerHTML = `<h3>ID: ${materia.id}</h3>
-                            <p>Puntaje: ${materia.nombre}<br>
-                            <b> ${materia.Puntaje}</b></p>
-                            <hr>`;
-                            document.getElementById("resultado").prepend(contenedor); */
-      
-      class Alumno {
-        constructor (nombre, email, password){
-            this.nombre = nombre;
-            this.email = email;
-            this.password = password;
-        }
-      }
-
    let arrayAlumnos  =  [];
-   let miFormulario = document.querySelector ("#formulario");
-   let inputNombre = document.querySelector ("#iNombre");
+   let miFormulario = document.querySelector("#formulario");
+   let inputNombre = document.querySelector("#iNombre");
 
    let nombreI = formulario.children [1].value;
    let emailI = formulario.children [3].value;
@@ -41,6 +15,7 @@ const materias = [
 
    miFormulario.addEventListener ("submit", agregarAlumnos);
    btnMostrar.addEventListener ("click", MostrarTodosAlumnos);
+   btnSubmit.addEventListener("submit", agregarAlumnos)
    inputNombre.focus();
 
 
@@ -52,13 +27,6 @@ const materias = [
    console.log(emailI);
    console.log(passwordI);
    }
-   if (nombreI =="" || emailI == "" || passwordI ==""){
-    alert ("ERROR - COMPLETAR LOS CAMPOS PARA CONTINUAR: ");
-    inputNombre.focus();
-    flag = false;
-   } else {
-    flag = true;
-   }
 
 
    function agregarAlumnos (e){
@@ -69,18 +37,20 @@ const materias = [
         if (opcion == true){
             let formulario = e.target;
             arrayAlumnos.push (new Alumno (nombreI, emailI, passwordI));
-        } else{
-            alert ("El usuario no se agregara");
-        }
-    }
+        } else if (nombreI =="" || emailI == "" || passwordI ==""){
+            alert ("ERROR - COMPLETAR LOS CAMPOS PARA CONTINUAR: ");
+            inputNombre.focus();
+            flag = false;} else {alert ("El usuario no se agregara");
+            flag = true;   
    }
-
+   }
+   }
    formulario.children[1].value= "";
    formulario.children[3].value="";
    formulario.children[5].value="";
    contenedor.innerHTML ="";
    AgregarAlDom();
-   input.Nombre.focus();
+   inputNombre.focus();
    
 
 
