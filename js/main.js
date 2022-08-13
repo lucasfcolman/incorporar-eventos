@@ -55,7 +55,7 @@
 
 
    function AgregarAlDom (){
-    contenedor.innerHTML = "<h3>Ultimo Alumno Ingresado: </h3><p><strong> Nombre: </strong> ${nombreI}</p> <p><strong> Email: </strong> ${emailI}</p><p><strong> Password: </strong> ${passwordI}</p> <hr>";
+    contenedor.innerHTML = `<h3>Ultimo Alumno Ingresado: </h3><p><strong> Nombre: </strong> ${nombreI}</p> <p><strong> Email: </strong> ${emailI}</p><p><strong> Password: </strong> ${passwordI}</p> <hr>`;
          }
 
 
@@ -64,6 +64,6 @@
     let i = 0;
     displayTodos.innerHTML = '<h3> Listado de todos los Alumnos: </h3>';
     for (const alumno of arrayAlumnos){
-        displayTodos.innerHTML += ' <p><strong> Nombre: </strong> ${alumno.nombre}</p> <p><strong> Email: </strong> ${alumno.email}</p><p><strong> Password: </strong> ${alumno.password}</p> <hr>'
+        displayTodos.innerHTML += ` <p><strong> Nombre: </strong> ${alumno.nombre}</p> <p><strong> Email: </strong> ${alumno.email}</p><p><strong> Password: </strong> ${alumno.password}</p> <hr>`
     }
  }
